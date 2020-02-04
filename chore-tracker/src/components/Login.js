@@ -20,7 +20,7 @@ class Login extends React.Component {
 	login = e => {
 		e.preventDefault();
 		axiosWithAuth()
-    .post('/api/login', this.state.credentials)
+    .post('https://chore-tracker-build.herokuapp.com/api/auth/login', this.state.credentials)
     .then(res => {
       localStorage.setItem('token', res.data.payload);
       this.props.history.push('');
