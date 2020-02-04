@@ -1,28 +1,38 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Route } from "react-router-dom";
+import "./App.css";
+import axios from "axios";
+import Profile from "./components/Profile";
+import Header from "./components/Header";
 import Login from "./components/Login";
 
 function App() {
+  const [children, setChildren] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://chore-tracker-build.herokuapp.com/api/child")
+      .then(response => {
+        setChildren(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   return (
-    <Router>
-      <div className="App">
-       <nav className="nav">
-       <h1>Chore Tracker!</h1>
-           <ul>
-            <li>
-            <Link to="/">Login</Link>
-            </li>
-            <li>
-              <Link to="/auth/login">Chore Tracker!</Link>
-            </li>
-           </ul>
-          </nav>
-				<Switch>
-					<Route exact path="/auth/login" component={Login} />
-					<Route path="/auth/login" component={Login} />
-				</Switch>
-			</div>
-		</Router>
+    <div className="App">
+      <Header />
+      <Route exact path="/">
+        <Login />
+      </Route>
+      <Route path="/profile">
+        <Profile children={children} />
+      </Route>
+      <Route path="/child/:id">
+        <ChildProfile />
+      </Route>
+    </div>
   );
 }
 
