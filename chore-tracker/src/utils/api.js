@@ -5,7 +5,7 @@ export function getToken() {
 }
 export default function() {
   return axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://chore-tracker-build.herokuapp.com/",
     headers: {
       Authorization: getToken()
     }
