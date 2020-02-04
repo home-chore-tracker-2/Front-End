@@ -7,6 +7,7 @@ function ChoreCard(chore) {
       <p>Due: {chore.dueDate}</p>
       <p>Description: {chore.description}</p>
       <p>Worth {chore.points} points!</p>
+      <div></div>
     </div>
   );
 }
