@@ -1,5 +1,6 @@
 import React from "react";
 import ChildCard from "./ChildCard";
+import ChoreForm from "./ChoreForm";
 import styled from "styled-components";
 
 const ProfileDiv = styled.div`
@@ -26,6 +27,7 @@ function Profile(props) {
           return ChildCard(child);
         })}
       </ChildListDiv>
+      <ChoreForm />
     </ProfileDiv>
   );
 }
