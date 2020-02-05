@@ -1,6 +1,6 @@
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("token") ? true : false
