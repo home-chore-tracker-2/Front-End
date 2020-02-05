@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ChoreCard from "./ChoreCard";
@@ -23,7 +23,7 @@ function ChildProfile(props) {
     <div>
       <h2>{child.username}</h2>
       <div>
-        {chores.map(chore => {
+        {ChoreCard.map(chore => {
           return <ChoreCard chore={chore} />;
         })}
       </div>
