@@ -1,6 +1,6 @@
 
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderDiv = styled.div`

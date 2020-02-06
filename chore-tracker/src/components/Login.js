@@ -6,7 +6,8 @@ class Login extends React.Component {
 	state = {
 		credentials: {
       username: '',
-      password: ''
+      password: '',
+      email: ''
 		}
 	};
 	handleChange = e => {
@@ -50,6 +51,14 @@ render() {
             value={this.state.credentials.password}
             placeholder="password"
             autoComplete="current-password"
+            onChange={this.handleChange}
+          />
+                    <input
+            type="text"
+            name="email"
+            value={this.state.credentials.email}
+            placeholder="email"
+            autoComplete="email"
             onChange={this.handleChange}
           />
 

@@ -33,23 +33,10 @@ const Register = ({ values, errors, touched, status }) => {
         {touched.password && errors.password && (
           <p className="form-error">{errors.password}</p>
         )}
-        <label className="label" htmlFor="roleId">
-          Type of User
-        </label>
-        <Field
-          as="select"
-          name="role_id"
-          type="dropdownlist"
-          className="dropdown"
-        >
-          <option value="role_id">Role ID</option>
-          <option value="1">1 Instructor</option>
-          <option value="2">2 Client</option>
-        </Field>
+        
         {touched.roleId && errors.role_id && (
           <p className="form-error">{errors.role_id}</p>
         )}
-
         <button className="PrimaryBtn" type="submit">
           Submit
         </button>
@@ -68,15 +55,14 @@ const FormikRegister = withFormik({
     return {
       username: username || "",
       password: password || "",
-      role_id: role_id || ""
+      email: email || "",
     };
   },
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Required."),
     password: Yup.string().required("Required."),
-    role_id: Yup.string()
-      .oneOf(["1", "2"])
-      .required("Please choose a role")
+    email: Yup.string().required("Required."),
+
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
