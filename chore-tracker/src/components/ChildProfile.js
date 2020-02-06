@@ -49,6 +49,7 @@ function ChildProfile() {
         return ChoreCard(chore);
       })}
     </ChildProfileDiv>
+
   );
 }
 

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import styled from "styled-components";
@@ -42,6 +43,7 @@ const TitleH1 = styled.h1`
   text-shadow: 3px 3px 3px #222;
 `;
 
+
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("token") ? true : false
@@ -70,7 +72,7 @@ function Header() {
       ) : (
         <HeaderNav className="nav">
           <NavLink to="/auth/register" className="white">
-            Register
+            New User
           </NavLink>
           <NavLink to="/auth/login" className="white">
             Login
