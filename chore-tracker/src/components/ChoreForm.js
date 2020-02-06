@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { withFormik, Form, Field } from "formik";
 // import * as Yup from "yup";
-import axios from "axios";
+import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from "styled-components";
 
 const ChoreFormForm = styled.form`
@@ -45,7 +45,7 @@ function ChoreForm() {
 
   const submitForm = e => {
     e.preventDefault();
-    axios
+    axiosWithAuth()
       .post("https://chore-tracker-build.herokuapp.com/api/chores", chore)
       .then(res => {
         console.log(res);
