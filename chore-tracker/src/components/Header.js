@@ -1,4 +1,3 @@
-
 import React, {  useState } from "react";
 import { NavLink  } from "react-router-dom";
 import styled from "styled-components";
@@ -78,9 +77,10 @@ function Header() {
       ) : (
         <HeaderNav className="nav">
           <NavLink to="/register" className="white">
-            New Account
+            New User
           </NavLink>
-          <NavLink to="/login" className="white">
+          <NavLink to="/" className="white">
+
             Login
           </NavLink>
 

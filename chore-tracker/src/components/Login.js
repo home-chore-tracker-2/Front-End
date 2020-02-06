@@ -28,7 +28,6 @@ class Login extends React.Component {
     })
     .catch(err => console.log('Access denied', err.response));
 };
-
   render() {
     if (localStorage.getItem("token")) return <Redirect to="" />;
     return (

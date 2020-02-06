@@ -5,6 +5,8 @@ import axios from "axios";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Register from "./components/Register";
+
 import ChildProfile from "./components/ChildProfile";
 import Footer from "./components/Footer";
 import styled from "styled-components";
