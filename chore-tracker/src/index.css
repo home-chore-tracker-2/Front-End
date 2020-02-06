@@ -3,8 +3,31 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./assets/background.jpg);
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 code {
   font-family: "Roboto", sans-serif;
+}
+
+.child-card {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  background-color: gray;
+  width: 25%;
+  border: 1px solid black;
+  border-radius: 7px;
+  opacity: 0.9;
+  margin: 2%;
+}
+
+.white {
+  color: white;
+  text-decoration: none;
 }
