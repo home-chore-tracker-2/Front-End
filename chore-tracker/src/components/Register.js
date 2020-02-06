@@ -37,17 +37,20 @@ const Register = ({ errors, touched, status }) => {
         {touched.password && errors.password && (
           <p className="form-error">{errors.password}</p>
         )}
-        
-        {touched.roleId && errors.role_id && (
-          <p className="form-error">{errors.role_id}</p>
+        <label className="label" htmlFor="email">
+          Type of User
+        </label>
+        <Field name="email" type="email" className="Input"></Field>
+        {touched.email && errors.email && (
+          <p className="form-error">{errors.email}</p>
         )}
         <button className="PrimaryBtn" type="submit">
           Submit
         </button>
         <p>
           {" "}
-          Please navigate to Login after Submitting Username, Password, and Role
-          ID
+          Please navigate to Login after Submitting Username, Password, and
+          Email.
         </p>
       </Form>
     </div>
@@ -65,7 +68,7 @@ const FormikRegister = withFormik({
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Required."),
     password: Yup.string().required("Required."),
-    email: Yup.string().required("Required."),
+    email: Yup.string().required("Required.")
 
   }),
   handleSubmit(values, { setStatus, resetForm }) {

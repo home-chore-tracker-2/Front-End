@@ -12,7 +12,6 @@ import PrivateRoute from "./components/PrivateRoute"
 import Register from "./components/Register"
 const AppDiv = styled.div``;
 
-
 function App() {
   const [children, setChildren] = useState([]);
 
