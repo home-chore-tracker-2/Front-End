@@ -1,24 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import styled from "styled-components";
+import Img from "../assets/logo.png";
 
 const HeaderDiv = styled.div`
   height: 7vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: gray;
   position: fixed;
   top: 0;
+  z-index: 1;
+  border-bottom: 1px solid black;
 `;
 
 const HeaderNav = styled.nav`
-  width: 60%;
+  width: 30%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: white;
+`;
+
+const TitleDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  max-height: 100%;
+`;
+
+const LogoImg = styled.img`
+  max-height: 5vh;
+  -webkit-filter: drop-shadow(3px 3px 3px #222);
+  filter: drop-shadow(3px 3px 3px #222);
+`;
+
+const TitleH1 = styled.h1`
+  text-shadow: 3px 3px 3px #222;
 `;
 
 function Header() {
@@ -28,6 +49,10 @@ function Header() {
 
   return (
     <HeaderDiv className="header">
+      <TitleDiv>
+        <LogoImg src={Img} alt="logo" />
+        <TitleH1>Chore Tracker</TitleH1>
+      </TitleDiv>
       <div className="headrow">
         <NavLink to="/"></NavLink>
       </div>
