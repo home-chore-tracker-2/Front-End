@@ -19,18 +19,24 @@ const ChoreFormForm = styled.form`
 
 const ChoreFormLabel = styled.label`
   margin: 2%;
+  color: white;
 `;
 
 const ChoreFormButton = styled.button`
   margin: 2%;
 `;
 
+const ChoreFormH2 = styled.h1`
+  color: white;
+`;
+
 function ChoreForm() {
   const [chore, setChore] = useState({
     name: "",
     description: "",
-    points: "",
-    dueDate: ""
+    points: 0,
+    dueDate: "",
+    completed: false
   });
 
   const handleChange = e => {
@@ -40,7 +46,7 @@ function ChoreForm() {
   const submitForm = e => {
     e.preventDefault();
     axios
-      .post("https://chore-tracker-build.herokuapp.com/api/chores")
+      .post("https://chore-tracker-build.herokuapp.com/api/chores", chore)
       .then(res => {
         console.log(res);
       })
@@ -51,14 +57,16 @@ function ChoreForm() {
 
   return (
     <ChoreFormForm onSubmit={submitForm}>
+      <ChoreFormH2>Add a Chore</ChoreFormH2>
       <ChoreFormLabel htmlFor="name">
+        Chore Name:
         <input
+          required
           id="name"
           type="text"
           name="name"
           onChange={handleChange}
           value={chore.name}
-          placeholder="Name of chore"
         />
       </ChoreFormLabel>
       <ChoreFormLabel htmlFor="description">
@@ -68,29 +76,32 @@ function ChoreForm() {
           name="description"
           onChange={handleChange}
           value={chore.description}
-          placeholder="Description of chore"
+          placeholder="Chore Description"
           rows="5"
           cols="50"
         />
       </ChoreFormLabel>
       <ChoreFormLabel htmlFor="points">
+        Chore point value:
         <input
+          required
           id="points"
-          type="text"
+          type="number"
           name="points"
           onChange={handleChange}
           value={chore.points}
-          placeholder="Point for chore"
         />
       </ChoreFormLabel>
       <ChoreFormLabel htmlFor="dueDate">
+        Chore Due Date:
         <input
+          required
           id="dueDate"
-          type="text"
+          type="date"
           name="dueDate"
           onChange={handleChange}
           value={chore.dueDate}
-          placeholder="Due date (MM-DD-YYYY)"
+          placeholder="due date (MM/DD/YYYY)"
         />
       </ChoreFormLabel>
       <ChoreFormButton type="submit" onClick={submitForm}>

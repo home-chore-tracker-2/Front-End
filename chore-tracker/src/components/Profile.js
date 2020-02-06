@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import ChildCard from "./ChildCard";
 import ChoreForm from "./ChoreForm";
 import styled from "styled-components";
-import axiosWithAuth from "../utils/axiosWithAuth";
 import axios from "axios";
 
 const ProfileDiv = styled.div`
@@ -46,7 +45,7 @@ function Profile() {
 
   return (
     <ProfileDiv>
-      <ProfileH2>username</ProfileH2>
+      <ProfileH2>Username</ProfileH2>
       <ChildListDiv>
         {children.map(child => {
           return ChildCard(child);
