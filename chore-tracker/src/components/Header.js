@@ -46,10 +46,10 @@ function Header() {
         </NavLink>
       ) : (
         <HeaderNav className="nav">
-          <NavLink to="/auth/register" className="white">
+          <NavLink to="/register" className="white">
             New User
           </NavLink>
-          <NavLink to="/auth/login" className="white">
+          <NavLink to="/login" className="white">
             Login
           </NavLink>
           <NavLink to="/profile" className="white">

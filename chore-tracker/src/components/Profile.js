@@ -30,7 +30,6 @@ const ProfileH2 = styled.h2`
 
 function Profile() {
   const [children, setChildren] = useState([]);
-
   useEffect(() => {
     axios
       .get("https://chore-tracker-build.herokuapp.com/api/child")
