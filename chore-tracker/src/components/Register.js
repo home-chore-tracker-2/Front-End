@@ -3,7 +3,7 @@ import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-const Register = ({ values, errors, touched, status }) => {
+const Register = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -30,6 +30,10 @@ const Register = ({ values, errors, touched, status }) => {
           name="password"
           autoComplete="off"
         />
+           <Field className="Input" type="email" name="email" />
+        {touched.email && errors.email && (
+          <p className="form-error">{errors.email}</p>
+        )}
         {touched.password && errors.password && (
           <p className="form-error">{errors.password}</p>
         )}
@@ -51,7 +55,7 @@ const Register = ({ values, errors, touched, status }) => {
 };
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, role_id }) {
+  mapPropsToValues({ username, password, email }) {
     return {
       username: username || "",
       password: password || "",
@@ -71,7 +75,6 @@ const FormikRegister = withFormik({
         values
       )
       .then(response => {
-        localStorage.setItem("token", response.data.token);
         setStatus(response.data);
         let isLoggedIn = true;
       })

@@ -6,8 +6,7 @@ class Login extends React.Component {
 	state = {
 		credentials: {
       username: '',
-      password: '',
-      email: ''
+      password: ''
 		}
 	};
 	handleChange = e => {
@@ -23,7 +22,8 @@ class Login extends React.Component {
 		axiosWithAuth()
     .post('https://chore-tracker-build.herokuapp.com/api/auth/login', this.state.credentials)
     .then(res => {
-      localStorage.setItem('token', 'username', res.data.payload);
+      console.log(res.data);
+      localStorage.setItem('token', res.data.token);
       this.props.history.push('');
     })
     .catch(err => console.log('Access denied', err.response));
@@ -51,14 +51,6 @@ render() {
             value={this.state.credentials.password}
             placeholder="password"
             autoComplete="current-password"
-            onChange={this.handleChange}
-          />
-                    <input
-            type="text"
-            name="email"
-            value={this.state.credentials.email}
-            placeholder="email"
-            autoComplete="email"
             onChange={this.handleChange}
           />
 
