@@ -1,6 +1,6 @@
 
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import React, {  useState } from "react";
+import { NavLink  } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderDiv = styled.div`
@@ -34,6 +34,7 @@ function Header() {
         <NavLink to="/"></NavLink>
       </div>
       {isLoggedIn ? (
+        <>
         <NavLink
           className="white"
           onClick={() => {
@@ -44,17 +45,19 @@ function Header() {
         >
           <label className="logout">Logout</label>
         </NavLink>
-      ) : (
-        <HeaderNav className="nav">
-          <NavLink to="/auth/register" className="white">
-            Register
-          </NavLink>
-          <NavLink to="/auth/login" className="white">
-            Login
-          </NavLink>
           <NavLink to="/profile" className="white">
             Profile
           </NavLink>
+          </>
+      ) : (
+        <HeaderNav className="nav">
+          <NavLink to="/register" className="white">
+            New Account
+          </NavLink>
+          <NavLink to="/login" className="white">
+            Login
+          </NavLink>
+
         </HeaderNav>
       )}
     </HeaderDiv>

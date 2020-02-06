@@ -22,7 +22,8 @@ class Login extends React.Component {
 		axiosWithAuth()
     .post('https://chore-tracker-build.herokuapp.com/api/auth/login', this.state.credentials)
     .then(res => {
-      localStorage.setItem('token', res.data.payload);
+      console.log(res.data);
+      localStorage.setItem('token', res.data.token);
       this.props.history.push('');
     })
     .catch(err => console.log('Access denied', err.response));
