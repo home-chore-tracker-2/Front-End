@@ -11,6 +11,7 @@ const FooterDiv = styled.div`
   align-items: center;
   position: fixed;
   bottom: 0;
+  border-top: 1px solid black;
 `;
 
 function Footer() {

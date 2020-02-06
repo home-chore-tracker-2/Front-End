@@ -46,8 +46,8 @@ const Register = ({ errors, touched, status }) => {
         </button>
         <p>
           {" "}
-          Please navigate to Login after Submitting Username, Password, and Role
-          ID
+          Please navigate to Login after Submitting Username, Password, and
+          Email.
         </p>
       </Form>
     </div>
@@ -59,13 +59,13 @@ const FormikRegister = withFormik({
     return {
       username: username || "",
       password: password || "",
-      email: email || "",
+      email: email || ""
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Required."),
-    password: Yup.string().required("Required."),
-    email: Yup.string().required("Required."),
+    username: Yup.string().required("Required"),
+    password: Yup.string().required("Required"),
+    email: Yup.string().required("Required")
 
   }),
   handleSubmit(values, { setStatus, resetForm }) {
