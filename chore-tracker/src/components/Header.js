@@ -47,7 +47,7 @@ function Header() {
       ) : (
         <HeaderNav className="nav">
           <NavLink to="/auth/register" className="white">
-            Register
+            New User
           </NavLink>
           <NavLink to="/auth/login" className="white">
             Login
