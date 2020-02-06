@@ -3,35 +3,32 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import { Redirect } from "react-router-dom";
 
 class Login extends React.Component {
-  state = {
-    credentials: {
-      username: "",
-      password: ""
-    }
-  };
-  handleChange = e => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-  login = e => {
-    e.preventDefault();
-    axiosWithAuth()
-      .post(
-        "https://chore-tracker-build.herokuapp.com/api/auth/login",
-        this.state.credentials
-      )
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload);
-        this.props.history.push("");
-      })
-      .catch(err => console.log("Access denied", err.response));
-  };
 
+	state = {
+		credentials: {
+      username: '',
+      password: ''
+		}
+	};
+	handleChange = e => {
+		this.setState({
+			credentials: {
+				...this.state.credentials,
+				[e.target.name]: e.target.value
+			}
+		});
+	};
+	login = e => {
+		e.preventDefault();
+		axiosWithAuth()
+    .post('https://chore-tracker-build.herokuapp.com/api/auth/login', this.state.credentials)
+    .then(res => {
+      console.log(res.data);
+      localStorage.setItem('token', res.data.token);
+      this.props.history.push('');
+    })
+    .catch(err => console.log('Access denied', err.response));
+};
   render() {
     if (localStorage.getItem("token")) return <Redirect to="" />;
     return (

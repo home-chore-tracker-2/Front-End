@@ -3,7 +3,7 @@ import axios from "axios";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-const Register = ({ values, errors, touched, status }) => {
+const Register = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
@@ -30,17 +30,17 @@ const Register = ({ values, errors, touched, status }) => {
           name="password"
           autoComplete="off"
         />
-        {touched.password && errors.password && (
-          <p className="form-error">{errors.password}</p>
-        )}
-        <label className="label" htmlFor="email">
-          Type of User
-        </label>
-        <Field name="email" type="email" className="Input"></Field>
+           <Field className="Input" type="email" name="email" />
         {touched.email && errors.email && (
           <p className="form-error">{errors.email}</p>
         )}
-
+        {touched.password && errors.password && (
+          <p className="form-error">{errors.password}</p>
+        )}
+        
+        {touched.roleId && errors.role_id && (
+          <p className="form-error">{errors.role_id}</p>
+        )}
         <button className="PrimaryBtn" type="submit">
           Submit
         </button>
@@ -66,6 +66,7 @@ const FormikRegister = withFormik({
     username: Yup.string().required("Required"),
     password: Yup.string().required("Required"),
     email: Yup.string().required("Required")
+
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
@@ -74,7 +75,6 @@ const FormikRegister = withFormik({
         values
       )
       .then(response => {
-        localStorage.setItem("token", response.data.token);
         setStatus(response.data);
         let isLoggedIn = true;
       })

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import React, {  useState } from "react";
+import { NavLink  } from "react-router-dom";
 import styled from "styled-components";
 import Img from "../assets/logo.png";
 
@@ -59,6 +59,7 @@ function Header() {
         <NavLink to="/"></NavLink>
       </div>
       {isLoggedIn ? (
+        <>
         <NavLink
           className="white"
           onClick={() => {
@@ -69,17 +70,20 @@ function Header() {
         >
           <label className="logout">Logout</label>
         </NavLink>
+          <NavLink to="/profile" className="white">
+            Profile
+          </NavLink>
+          </>
       ) : (
         <HeaderNav className="nav">
           <NavLink to="/register" className="white">
             New User
           </NavLink>
           <NavLink to="/" className="white">
+
             Login
           </NavLink>
-          <NavLink to="/profile" className="white">
-            Profile
-          </NavLink>
+
         </HeaderNav>
       )}
     </HeaderDiv>
