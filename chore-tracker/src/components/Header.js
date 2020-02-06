@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import styled from "styled-components";
@@ -41,8 +40,9 @@ const LogoImg = styled.img`
 
 const TitleH1 = styled.h1`
   text-shadow: 3px 3px 3px #222;
+  color: white;
+  margin: 1%;
 `;
-
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -71,10 +71,10 @@ function Header() {
         </NavLink>
       ) : (
         <HeaderNav className="nav">
-          <NavLink to="/auth/register" className="white">
+          <NavLink to="/register" className="white">
             New User
           </NavLink>
-          <NavLink to="/auth/login" className="white">
+          <NavLink to="/" className="white">
             Login
           </NavLink>
           <NavLink to="/profile" className="white">
