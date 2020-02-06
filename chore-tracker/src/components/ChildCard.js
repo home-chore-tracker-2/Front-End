@@ -1,33 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-const ChildCardDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: grey;
-`;
+import { NavLink } from "react-router-dom";
 
 function ChildCard(child) {
   return (
-    <ChildCardDiv>
-      <Link to={`/child/${child.id}`}>
-        <h2>{child.username}</h2>
-        <p>Points: {child.points}</p>
-        <p>
-          Clean Streak?{" "}
-          {() => {
-            if (child.cleanStreak > 0) {
-              return "Yes";
-            } else {
-              return "No";
-            }
-          }}
-        </p>
-      </Link>
-    </ChildCardDiv>
+    <NavLink className="child-card" to={`/child/${child.id}`}>
+      <h2>{child.username}</h2>
+      <p>Points: {child.points}</p>
+      <p>
+        Clean Streak?
+        {() => {
+          if (child.cleanStreak >= 1) {
+            return <span>"Yes"</span>;
+          } else {
+            return <span>"No"</span>;
+          }
+        }}
+      </p>
+    </NavLink>
   );
 }
 

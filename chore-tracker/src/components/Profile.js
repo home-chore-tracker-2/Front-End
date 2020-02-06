@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ChildCard from "./ChildCard";
+import ChoreForm from "./ChoreForm";
 import styled from "styled-components";
+import axios from "axios";
 
 const ProfileDiv = styled.div`
   display: flex;
@@ -8,24 +10,48 @@ const ProfileDiv = styled.div`
   justify-content: space-around;
   align-items: center;
   margin: 3% auto;
+  width: 100%;
 `;
 
 const ChildListDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  width: 100%;
 `;
 
-function Profile(props) {
+const ProfileH2 = styled.h2`
+  font-size: 4rem;
+  color: white;
+  margin: 2%;
+  text-shadow: black 0.1em 0.1em 0.2em;
+`;
+
+function Profile() {
+  const [children, setChildren] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://chore-tracker-build.herokuapp.com/api/child")
+      .then(res => {
+        console.log(res);
+        setChildren(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <ProfileDiv>
-      <h2>username</h2>
+      <ProfileH2>Username</ProfileH2>
       <ChildListDiv>
-        {props.children.map(child => {
+        {children.map(child => {
           return ChildCard(child);
         })}
       </ChildListDiv>
+      <ChoreForm />
     </ProfileDiv>
   );
 }

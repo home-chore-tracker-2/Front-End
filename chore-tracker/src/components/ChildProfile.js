@@ -2,32 +2,54 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ChoreCard from "./ChoreCard";
+import ChildCard from "./ChildCard";
+import styled from "styled-components";
 
-function ChildProfile(props) {
-  console.log("props", props);
-  const [child, setChild] = useState;
+const ChildProfileDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10vh;
+`;
+
+function ChildProfile() {
+  const [child, setChild] = useState({});
   const { id } = useParams();
+
+  const [chores, setChores] = useState([]);
 
   useEffect(() => {
     axios
       .get(`https://chore-tracker-build.herokuapp.com/api/child/${id}`)
       .then(response => {
-        setChild(response);
+        console.log("profile child response", response);
+        setChild(response.data);
       })
       .catch(err => {
         console.log(err);
       });
-  });
+
+    axios
+      .get("https://chore-tracker-build.herokuapp.com/api/chores")
+      .then(response => {
+        console.log("profile chores response", response);
+        setChores(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, [id]);
 
   return (
-    <div>
-      <h2>{child.username}</h2>
-      <div>
-        {ChoreCard.map(chore => {
-          return <ChoreCard chore={chore} />;
-        })}
-      </div>
-    </div>
+    <ChildProfileDiv>
+      {ChildCard(child)}
+
+      {chores.map(chore => {
+        return ChoreCard(chore);
+      })}
+    </ChildProfileDiv>
+
   );
 }
 

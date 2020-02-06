@@ -5,7 +5,13 @@ import axios from "axios";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
 import Login from "./components/Login";
-import ChildProfile from "./components/ChildProfile"
+
+import ChildProfile from "./components/ChildProfile";
+import Footer from "./components/Footer";
+import styled from "styled-components";
+
+const AppDiv = styled.div``;
+
 
 function App() {
   const [children, setChildren] = useState([]);
@@ -22,7 +28,7 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <AppDiv className="App">
       <Header />
       <Route exact path="/">
         <Login />
@@ -33,7 +39,8 @@ function App() {
       <Route path="/child/:id">
         <ChildProfile />
       </Route>
-    </div>
+      <Footer />
+    </AppDiv>
   );
 }
 
