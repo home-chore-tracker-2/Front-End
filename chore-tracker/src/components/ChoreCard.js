@@ -23,11 +23,6 @@ function ChoreCard(chore) {
     console.log(chores);
     const [editing, setEditing] = useState(false);
     const [choreToEdit, setChoreToEdit] = useState();
-    const [createChore, setCreateChore] = useState({
-      code: {hex: ''},
-      chore: '',
-      id: Date.now()
-    })
     
     const editChore = chore => {
       setEditing(true);
@@ -56,13 +51,63 @@ function ChoreCard(chore) {
       <p>Due: {chore.dueDate}</p>
       <p>Description: {chore.description}</p>
       <p>Worth {chore.points} points!</p>
-      <span className="delete" onClick={e => {
-       e.stopPropagation();
-      deleteChore(chore)
-      }
-      }>
-            x
-     </span>{" "}
+      <div className="chores-wrap">
+      <p>chores</p>
+      <ul>
+        {chores.map(chore => (
+          <li key={chore.chore} onClick={() => editChore(chore)}>
+            <span>
+              <span className="delete" onClick={e => {
+                    e.stopPropagation();
+                    deleteChore(chore)
+                  }
+                }>
+                  x
+              </span>{" "}
+              {chore.chore}
+            </span>
+            <div
+              className="chore-box"
+              style={{ backgroundChore: chore.code.hex }}
+            />
+          </li>
+        ))}
+      </ul>
+      {editing && (
+        <form onSubmit={saveEdit}>
+          <legend>edit chore</legend>
+          <label>
+            chore name:
+            <input
+              onChange={e =>
+                setChoreToEdit({ ...choreToEdit, chore: e.target.value })
+              }
+              value={choreToEdit.chore}
+            />
+          </label>
+          <label>
+            hex code:
+            <input
+              onChange={e =>
+                setChoreToEdit({
+                  ...choreToEdit,
+                  code: { hex: e.target.value }
+                })
+              }
+              value={choreToEdit.code.hex}
+            />
+          </label>
+          <div className="button-row">
+            <button type="submit">save</button>
+            <button onClick={() => setEditing(false)}>cancel</button>
+          </div>
+        </form>
+      )}
+      <div className="spacer" />
+      <div className="spacer">    
+      </div>
+      </div>
+
     </ChoreCardDiv>
   );
 }
