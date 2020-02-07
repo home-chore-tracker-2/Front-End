@@ -37,13 +37,13 @@ const Register = ({ errors, touched, status }) => {
         {touched.password && errors.password && (
           <p className="form-error">{errors.password}</p>
         )}
-        <label className="label" htmlFor="email">
+        {/* <label className="label" htmlFor="email">
           Type of User
-        </label>
-        <Field name="email" type="email" className="Input"></Field>
+        </label> */}
+        {/* <Field name="email" type="email" className="Input"></Field>
         {touched.email && errors.email && (
           <p className="form-error">{errors.email}</p>
-        )}
+        )} */}
         <button className="PrimaryBtn" type="submit">
           Submit
         </button>
