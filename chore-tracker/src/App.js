@@ -6,12 +6,11 @@ import Profile from "./components/Profile";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
 import ChildProfile from "./components/ChildProfile";
 import Footer from "./components/Footer";
 import styled from "styled-components";
-import PrivateRoute from "./components/PrivateRoute"
-import Register from "./components/Register"
+import PrivateRoute from "./components/PrivateRoute";
+
 const AppDiv = styled.div``;
 
 function App() {
@@ -29,15 +28,13 @@ function App() {
   });
 
   return (
-
     <AppDiv className="App">
       <Header />
-
       <div className="App">
-        <Route exact path= "/" component={Login}/>
+        <Route exact path="/" component={Login} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <PrivateRoute exact path='/protected' component={Login} />
+        <PrivateRoute exact path="/protected" component={Login} />
       </div>
       <Route path="/profile">
         <Profile children={children} />
