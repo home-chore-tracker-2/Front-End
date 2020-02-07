@@ -3,7 +3,6 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import { Redirect } from "react-router-dom";
 
 class Login extends React.Component {
-
 	state = {
 		credentials: {
       username: '',
@@ -53,7 +52,7 @@ class Login extends React.Component {
               autoComplete="current-password"
               onChange={this.handleChange}
             />
-
+        
             <button type="submit" onClick={this.login}>
               Login
             </button>

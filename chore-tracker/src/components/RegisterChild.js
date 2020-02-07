@@ -4,10 +4,10 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 const Register = ({ errors, touched, status }) => {
-  const [users, setUsers] = useState([]);
+  const [ user, setUser] = useState([]);
 
   useEffect(() => {
-    status && setUsers(users => [...users, status]);
+    status && setUser(user => [...user, status]);
   }, [status]);
 
   return (
@@ -30,10 +30,6 @@ const Register = ({ errors, touched, status }) => {
           name="password"
           autoComplete="off"
         />
-           <Field className="Input" type="email" name="email" />
-        {touched.email && errors.email && (
-          <p className="form-error">{errors.email}</p>
-        )}
         {touched.password && errors.password && (
           <p className="form-error">{errors.password}</p>
         )}
@@ -41,34 +37,26 @@ const Register = ({ errors, touched, status }) => {
         <button className="PrimaryBtn" type="submit">
           Submit
         </button>
-        <p>
-          {" "}
-          Please navigate to Login after Submitting Username, Password, and
-          Email.
-        </p>
       </Form>
     </div>
   );
 };
 
-const FormikRegister = withFormik({
-  mapPropsToValues({ username, password, email }) {
+const RegisterChild = withFormik({
+  mapPropsToValues({ username, password }) {
     return {
       username: username || "",
       password: password || "",
-      email: email || ""
     };
   },
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Required"),
     password: Yup.string().required("Required"),
-    email: Yup.string().required("Required")
-
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
       .post(
-        "https://chore-tracker-build.herokuapp.com/api/auth/register",
+        "https://chore-tracker-build.herokuapp.com/api/child",
         values
       )
       .then(response => {
@@ -79,4 +67,4 @@ const FormikRegister = withFormik({
   }
 })(Register);
 
-export default FormikRegister;
+export default RegisterChild;
