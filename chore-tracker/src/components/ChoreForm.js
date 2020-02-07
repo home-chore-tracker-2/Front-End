@@ -33,6 +33,7 @@ const ChoreFormH2 = styled.h1`
 function ChoreForm() {
   const [chore, setChore] = useState({
     name: "",
+    assign:"",
     description: "",
     points: 0,
     dueDate: "",
@@ -67,6 +68,17 @@ function ChoreForm() {
           name="name"
           onChange={handleChange}
           value={chore.name}
+        />
+      </ChoreFormLabel>
+      <ChoreFormLabel htmlFor="assign">
+        Assign To:
+        <input
+          required
+          id="assign"
+          type="text"
+          name="assign"
+          onChange={handleChange}
+          value={chore.assign}
         />
       </ChoreFormLabel>
       <ChoreFormLabel htmlFor="description">
