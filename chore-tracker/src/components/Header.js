@@ -73,12 +73,16 @@ function Header() {
           <NavLink to="/profile" className="white">
             Profile
           </NavLink>
+          <NavLink to="/registerChild" className="white">
+          New Child
+          </NavLink>
           </>
       ) : (
         <HeaderNav className="nav">
           <NavLink to="/register" className="white">
             New User
           </NavLink>
+
           <NavLink to="/" className="white">
 
             Login

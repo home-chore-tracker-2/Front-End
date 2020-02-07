@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import api from "../utils/api";
 
 
 const ChoreCardDiv = styled.div`

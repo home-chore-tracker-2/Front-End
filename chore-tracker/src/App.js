@@ -5,7 +5,8 @@ import axios from "axios";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
 import Login from "./components/Login";
-import Register from "./components/Register";
+import FormikRegister from "./components/Register";
+import RegisterChild from "./components/RegisterChild";
 import ChildProfile from "./components/ChildProfile";
 import Footer from "./components/Footer";
 import styled from "styled-components";
@@ -33,12 +34,13 @@ function App() {
       <div className="App">
         <Route exact path="/" component={Login} />
         <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <Route path="/register" component={FormikRegister} />
         <PrivateRoute exact path="/protected" component={Login} />
       </div>
       <Route path="/profile">
         <Profile children={children} />
       </Route>
+      <Route path="/registerChild" component={RegisterChild} />
       <Route path="/child/:id">
         <ChildProfile />
       </Route>

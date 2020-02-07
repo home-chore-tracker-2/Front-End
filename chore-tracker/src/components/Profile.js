@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Route } from "react-router-dom";
+import RegisterChild from "./RegisterChild";
 import ChildCard from "./ChildCard";
 import ChoreForm from "./ChoreForm";
 import styled from "styled-components";
@@ -51,6 +53,7 @@ function Profile() {
         })}
       </ChildListDiv>
       <ChoreForm />
+      <Route path="/register" component={RegisterChild} />
     </ProfileDiv>
   );
 }

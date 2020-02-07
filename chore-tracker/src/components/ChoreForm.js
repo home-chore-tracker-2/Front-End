@@ -31,9 +31,9 @@ const ChoreFormH2 = styled.h1`
 `;
 
 function ChoreForm() {
-  const [chore, setChore] = useState({
-    name: "",
-    assign:"",
+  const [chore, setChore, child ] = useState({
+    choreName: "",
+    child_id:"",
     description: "",
     points: 0,
     dueDate: "",
@@ -47,7 +47,7 @@ function ChoreForm() {
   const submitForm = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post("https://chore-tracker-build.herokuapp.com/api/chores", chore)
+      .post('/api/chores', chore)
       .then(res => {
         console.log(res);
       })
@@ -55,6 +55,16 @@ function ChoreForm() {
         console.log(err);
       });
   };
+  // const createChildSubmit = e =>{
+  //   e.preventDefault();
+  //   api().post('/auth/register/child', child)
+  //   .then(()=>{
+  //     alert('child created')
+  //     api().get('/api/register/child')
+  //     .then(res => updateChild(res.data))
+  //     .catch(err => console.log(err))
+  //   })
+  // };
 
   return (
     <ChoreFormForm onSubmit={submitForm}>
@@ -74,11 +84,11 @@ function ChoreForm() {
         Assign To:
         <input
           required
-          id="assign"
-          type="text"
+          id="child_id"
+          type="integer"
           name="assign"
           onChange={handleChange}
-          value={chore.assign}
+          value={chore.child_id}
         />
       </ChoreFormLabel>
       <ChoreFormLabel htmlFor="description">
