@@ -19,7 +19,7 @@ function ChildProfile() {
   });
   const { id } = useParams();
 
-  //   const [chores, setChores] = useState([]);
+  const [chores, setChores] = useState([]);
 
   useEffect(() => {
     axios
@@ -32,22 +32,22 @@ function ChildProfile() {
         console.log(err);
       });
 
-    // axios
-    //   .get("https://chore-tracker-build.herokuapp.com/api/chores")
-    //   .then(response => {
-    //     console.log("profile chores response", response);
-    //     setChores(response.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios
+      .get("https://chore-tracker-build.herokuapp.com/api/chores")
+      .then(response => {
+        console.log("profile chores response", response);
+        setChores(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, [id]);
 
   return (
     <ChildProfileDiv>
       {ChildCard(child)}
 
-      {child.chores.map(chore => {
+      {chores.map(chore => {
         return ChoreCard(chore);
       })}
     </ChildProfileDiv>

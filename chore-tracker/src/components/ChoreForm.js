@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { withFormik, Form, Field } from "formik";
 // import * as Yup from "yup";
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
 const ChoreFormForm = styled.form`
@@ -9,12 +9,11 @@ const ChoreFormForm = styled.form`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: gray;
+  background: rgba(128, 128, 128, 0.9);
   border: 1px solid black;
   border-radius: 7px;
   width: 50%;
   margin: 2%;
-  opacity: 0.9;
 `;
 
 const ChoreFormLabel = styled.label`
